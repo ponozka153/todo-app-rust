@@ -9,6 +9,8 @@ Toto je můj první ever projekt v Rustu, Rust je pro mě těžkým z důvodu to
 
 Všechny příkazy jsou udělané tak že musíte napsat např prvně add, a až pak co chcete přidat. Viz [examples]("#examples")
 
+[**DOWNLOAD**](https://github.com/ponozka153/todo-app-rust/releases)
+
 ## Examples
 ### todos
 ``todos``
