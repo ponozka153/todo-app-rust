@@ -61,7 +61,7 @@ fn read_todos(path: &str) -> String{
     let file = fs::File::open(path).expect("Nepovedlo se otevřít soubor");
     let reader = io::BufReader::new(file);
 
-    let mut i = 0;
+    let mut i: u8 = 0;
     let mut result: Vec<Vec<String>> = Vec::new();
     //pro každý \n
     for line in reader.lines(){
@@ -146,7 +146,8 @@ fn add_todo(path: &str){
         file.write_all(content.as_bytes()).expect("Nepovedlo se zapsat todo do souboru");
 
         clean_console();
-        println!("{} added succesfully!", input.trim());
+        //{:?} cause it add " before and after the value
+        println!("{:?} added succesfully!", input.trim());
         println!("");
 }
 
@@ -182,6 +183,7 @@ fn complete_todo(path: &str){
         let mut choosen_line_split: Vec<String> = choosen_line.split("|").map(String::from).collect();
         choosen_line_split[1] = "1".to_string();
 
+        //cant do i: u8 cause num is a usize, said the compiler
         let mut i = 1;
         let mut connected_vec: Vec<String> = Vec::new();
         for line in &lines {
@@ -204,8 +206,9 @@ fn complete_todo(path: &str){
 
         file.write_all(connected_string.as_bytes()).expect("Nepovedlo se přečíst content souboru");
 
+        clean_console();
+        println!("Marked as completed!");
         println!("");
-        println!("Marked as completed!")
 }
 
 fn clean_console(){
